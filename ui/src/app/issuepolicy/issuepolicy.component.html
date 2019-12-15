@@ -1,0 +1,17 @@
+<div class="shadow p-3 mb-5 bg-white rounded">
+
+    <div class="row" style="margin-left: 20px;">
+        <h4>Enter Policy Details </h4>
+    </div>
+    <br>
+    <div class="row" style="margin-left: 10px;">
+        <h5 class="col-md-4">Policy Amount :</h5>
+        <input class="col-md-4" type="text" name="count" [(ngModel)]="count" id="count"
+            placeholder="enter policy amount">
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-9"></div>
+        <button (click)="issue()" class="btn btn-primary"
+            onclick="document.getElementById('id01').style.display='block'">Generate Policy</button>
+    </div>

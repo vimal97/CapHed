@@ -1,0 +1,17 @@
+<app-topbar></app-topbar>
+<br>
+<div>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3">
+                <app-sidebar (callparent)="changecontent($event)"></app-sidebar>
+            </div>
+            <div class="col-md-9" [ngSwitch]="content">
+                <app-premium (callparent)="changecontent($event)" *ngSwitchCase="'premium'"></app-premium>
+                <app-claim *ngSwitchCase="'claim'"></app-claim>
+                <app-home *ngSwitchCase="'home'"></app-home>
+                <app-buytoken *ngSwitchCase="'buytoken'"></app-buytoken>
+            </div>
+        </div>
+    </div>
+</div>

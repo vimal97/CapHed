@@ -1,0 +1,37 @@
+<div class="shadow p-3 mb-5 bg-white rounded">
+    <h5 *ngIf="isgenerated=='no'">Premium is not generated, click to generate.</h5>
+    <h5 *ngIf="isgenerated=='yes'">Please pay the premium before 12/12/21 to avoid penalty.</h5>
+    <br>
+    <button *ngIf="isgenerated!='yes'" (click)="changestatus()" class="btn btn-primary btn-lg">
+        <i *ngIf="isgenerated=='no'"></i>
+        <i *ngIf="isgenerated=='pending'" class="fa fa-spinner fa-spin"></i> {{status}}</button>
+    <div *ngIf="isgenerated=='yes'">
+        <div class="row" style="margin-left: 20px;">
+            <h5 class="col-md-4">Premium Amount :</h5>
+            <p class="col-md-4">10 Token</p>
+        </div>
+        <div class="row" style="margin-left: 20px;">
+            <h5 class="col-md-4">Total Token Value :</h5>
+            <p class="col-md-4">100g Gold</p>
+        </div>
+        <div class="row" style="margin-left: 20px;">
+            <h5 class="col-md-4">Risk Factor :</h5>
+            <p class="col-md-4">{{risk}}</p>
+        </div>
+        <br>
+        <div class="row" style="margin-left: 20px;">
+            <div class="col-md-8">
+                <h4 *ngIf="mytoken_count>=required_token">You have enough token in your account!</h4>
+                <h4 *ngElse>You don't have enough tokens!</h4>
+            </div>
+            <div class="col-md-4">
+                <button *ngIf="mytoken_count>=required_token" style=" width: 100%;" class="btn btn-primary">Pay
+                    Tokens</button>
+                <button (click)="changecontent('buytoken')" *ngIf="mytoken_count<required_token" style=" width: 100%;"
+                    class="btn btn-primary">Buy
+                    Tokens</button>
+            </div>
+        </div>
+
+    </div>
+</div>

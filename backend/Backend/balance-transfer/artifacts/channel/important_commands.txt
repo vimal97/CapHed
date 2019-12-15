@@ -1,0 +1,21 @@
+export GOPATH=/home/vimal974ever/Desktop/Blockchain/Fabric/fabric-samples/bin/
+
+export PATH=$PATH:$GOPATH 
+
+export export FABRIC_CFG_PATH=/home/vimal974ever/Desktop/Blockchain/Fabric/fabric-samples/balance-transfer/artifacts/channel/
+
+cryptogen generate --config=./cryptogen.yaml
+
+configtxgen -outputBlock genesis.block -profile ThreeOrgsOrdererGenesis
+
+configtxgen -outputCreateChannelTx mychannel.tx -profile ThreeOrgsChannel -channelID mychannel
+
+configtxgen -inspectBlock genesis.block
+
+configtxgen -inspectChannelCreateTx mychannel.tx
+
+configtxgen -outputAnchorPeersUpdate Org1AnchorPeer.tx -profile ThreeOrgsChannel -channelID mychannel -asOrg Org1MSP
+
+configtxgen -outputAnchorPeersUpdate Org2AnchorPeer.tx -profile ThreeOrgsChannel -channelID mychannel -asOrg Org2MSP
+
+configtxgen -outputAnchorPeersUpdate Org3AnchorPeer.tx -profile ThreeOrgsChannel -channelID mychannel -asOrg Org3MSP

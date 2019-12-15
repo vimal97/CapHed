@@ -1,0 +1,37 @@
+<div class="shadow p-3 mb-5 bg-white rounded">
+
+    <div class="row" style="margin-left: 20px;">
+        <h4>Current Token Exchange Rate : 1g Gold / $166 </h4>
+    </div>
+    <hr>
+    <div style="margin-bottom:10px;">
+        <div class="row" style="margin-left: 20px;">
+            <h5 class="col-md-4">Tokens in Wallet : </h5>
+            <p class="col-md-4">{{ userdata.tokens }}</p>
+        </div>
+        <div class="row" style="margin-left: 20px;">
+            <h5 class="col-md-4">Risk Mesured : </h5>
+            <p class="col-md-4">{{ userdata.riskFactor }}</p>
+        </div>
+        <div class=" row" style="margin-left: 20px;">
+            <h5 class="col-md-4">Tokens to Buy :</h5>
+            <input type="text" name="count" [(ngModel)]="count" id="count" placeholder="enter tokens count">
+        </div>
+        <br>
+        <div class="row" style="margin-left: 20px;">
+            <h5 class="col-md-4">Buy From :</h5>
+            <button (click)="selected='parent'" class="btn" [class.btn-primary]="selected=='parent'"
+                [class.btn-secondary]="selected!='parent'">Parent</button>
+            
+            <button style="margin-left:20px;" (click)="selected='child2'" class="btn" [class.btn-primary]="selected=='child2'"
+                [class.btn-secondary]="selected!='child2'">Child
+                2</button>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9"></div>
+            <button (click)="pay()" class="btn btn-primary"
+                onclick="document.getElementById('id01').style.display='block'">Buy
+                Now</button>
+        </div>
+    </div>

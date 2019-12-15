@@ -1,0 +1,86 @@
+<div class="shadow p-3 mb-5 bg-white rounded">
+
+    <div class="row" style="margin-left: 20px;"><h4>Your Claim Information</h4></div>
+    <hr>
+    <div style="margin-bottom:10px;">
+        <div class="row" style="margin-left: 20px;">
+            <h5 class="col-md-4">Current Risk Factor :</h5>
+            <p class="col-md-4">{{ userdata.riskFactor }}</p>
+        </div>
+        <div class="row" style="margin-left: 20px;">
+            <h5 class="col-md-4">Total Claim Amount :</h5>
+            <p class="col-md-4">{{ userdata.policytokens }}</p>
+        </div>
+        <div class="row" style="margin-left: 20px;">
+            <h5 class="col-md-4">Available Claim Amount :</h5>
+            <p class="col-md-4">{{ userdata.tokens }}</p>
+        </div>
+        <div class="row">
+            <div class="col-md-9"></div>
+            <button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'">Raise Claim Request</button>
+        </div>
+    </div>
+
+    <!-- <button  class="w3-button w3-black">Open Modal</button> -->
+
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content" style="border-radius: 4px;">
+        <header class="w3-container"  style="background-color: #1976d2;"> 
+            <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright" style="color: white">&times;</span>
+            <h2 style="color: white;padding:10px;">Claim your Insurance</h2>
+        </header>
+        <div class="w3-container">
+            <div class="row" style="padding:10px;">
+                <div class="col-md-6"><h5>Category of Reason : </h5></div>
+                <div class="col-md-6">
+                        <div class="dropdown">
+                                <button type="button" style="background-color: white;color: black;" id="issue" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                  Choose your category
+                                </button>
+                                <div class="dropdown-menu">
+                                  <a class="dropdown-item" onclick="document.getElementById('issue').innerHTML = 'Natural Disaster'" href="#">Natural Disaster</a>
+                                  <a class="dropdown-item" onclick="document.getElementById('issue').innerHTML = 'External Attacks'" href="#">External Attacks</a>
+                                  <a class="dropdown-item" onclick="document.getElementById('issue').innerHTML = 'Market Breakdown'" href="#">Market Breakdown</a>
+                                </div>
+                              </div>
+                </div>
+            </div>
+            <div class="row" style="padding:10px;">
+                <div class="col-md-6"><h5>Reasons to Claim : </h5></div>
+                <div class="col-md-6">
+                    <textarea rows="4" cols="35" id="comment" placeholder="Brief the reason here..."></textarea>
+                </div>
+            </div>
+            <div class="row" style="padding:10px;">
+                <div class="col-md-6"><h5>Amount to Claim : </h5></div>
+                <div class="col-md-6"> 
+                    <input type="text" placeholder="Enter amount in tokens" style="font-size: 16px;width: 73%;border-top: none;border-left: none;border-right: none;">
+                </div>
+            </div>
+            <div class="row" style="padding:10px;">
+                <div class="col-md-6"><h5>Additional Documents : </h5></div>
+                <div class="col-md-6">
+                    <div class="custom-file mb-3" style="width: 73%;">
+                        <input type="file" class="custom-file-input" id="customFile" name="filename">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="w3-container" style="padding-bottom: 20px;">
+            <div class="row">
+                <div class="col-md-8"></div>
+                <button class="btn btn-primary" (click) = "raise_claim()">Raise Claim Request</button>
+            </div>
+        </footer>
+        </div>
+    </div>
+
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+</div>

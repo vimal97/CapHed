@@ -1,0 +1,16 @@
+<app-topbar></app-topbar>
+<br>
+<div>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3">
+                <app-parentsidebar (callparent)="changecontent($event)"></app-parentsidebar>
+            </div>
+            <div class="col-md-9" [ngSwitch]="content">
+                <app-issuepolicy *ngSwitchCase="'issuepolicy'"></app-issuepolicy>
+                <app-approveclaim *ngSwitchCase="'approveclaim'"></app-approveclaim>
+                <app-parenthome *ngSwitchCase="'parenthome'"></app-parenthome>
+            </div>
+        </div>
+    </div>
+</div>
